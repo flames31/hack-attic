@@ -1,4 +1,4 @@
-module github.com/flames31/hackattic/readqr
+module github.com/flames31/hack-attic/readqr
 
 go 1.23.3
 
