@@ -1,24 +1,18 @@
 package tools
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
-	"os"
-
-	"github.com/joho/godotenv"
 )
 
-func FetchProblem(problemName string) (map[string]interface{}, error) {
-	err := godotenv.Load(".env")
-	if err != nil {
-		fmt.Printf("error loading .env : %v\n", err)
-		os.Exit(1)
-	}
+const BaseURL = "https://hackattic.com/challenges/"
 
-	accessToken := os.Getenv("ACCESS_TOKEN")
+func FetchProblem(problemName, accessToken string) (map[string]interface{}, error) {
 
-	resp, err := http.Get("https://hackattic.com/challenges/" + problemName + "/problem?access_token=" + accessToken)
+	resp, err := http.Get(BaseURL + problemName + "/problem?access_token=" + accessToken)
 	if err != nil {
 		return nil, fmt.Errorf("err in response : %w", err)
 	}
@@ -30,4 +24,25 @@ func FetchProblem(problemName string) (map[string]interface{}, error) {
 	}
 
 	return problem, nil
+}
+
+func SendReponse(resBody map[string]interface{}, accessToken, problemName string) (string, error) {
+
+	respData, err := json.Marshal(resBody)
+	if err != nil {
+		return "", fmt.Errorf("err in marshalling to json : %w", err)
+	}
+
+	finalResp, err := http.Post(BaseURL+problemName+"/solve?access_token="+accessToken, "application/json", bytes.NewBuffer(respData))
+	if err != nil {
+		return "", fmt.Errorf("err is sending response : %w", err)
+	}
+
+	defer finalResp.Body.Close()
+	finalData, err := io.ReadAll(finalResp.Body)
+	if err != nil {
+		return "", fmt.Errorf("err in reading response body : %w", err)
+	}
+
+	return string(finalData), nil
 }
