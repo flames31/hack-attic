@@ -5,6 +5,7 @@ go 1.23.3
 require (
 	github.com/caiguanhao/readqr v1.0.0
 	github.com/joho/godotenv v1.5.1
+	github.com/flames31/hack-attic/tools v0.0.0-20250623001422-5f40a8642572
 )
 
 require (

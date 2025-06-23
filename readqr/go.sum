@@ -1,5 +1,9 @@
 github.com/caiguanhao/readqr v1.0.0 h1:axynewywpUyqZxFjKPtEbr97PzSOMrJsfn9bKkp+22w=
 github.com/caiguanhao/readqr v1.0.0/go.mod h1:oaAqEl5Zt0XzeIJf7nCEzJFz4is8rfE+Vgiw8b07vMM=
+github.com/flames31/hack-attic/tools v0.0.0-20250622234758-598fe67c758c h1:A+SwAuhxM6G4C7//LyXNSy4rwI5lyMsyVzKSSGZQEhI=
+github.com/flames31/hack-attic/tools v0.0.0-20250622234758-598fe67c758c/go.mod h1:naNeHXqm4+mvo58LPh/vIWhMAQjPZM7hKMykCXHQfAo=
+github.com/flames31/hack-attic/tools v0.0.0-20250623001422-5f40a8642572 h1:KnL9F5jJ1UWaEVaDSc2co42KSAwS3iks9gJp4dro6IM=
+github.com/flames31/hack-attic/tools v0.0.0-20250623001422-5f40a8642572/go.mod h1:L1Sukq8ll0JnDYn1ulRQDuchkNjyfSknaXcd0WNAe+g=
 github.com/joho/godotenv v1.5.1 h1:7eLL/+HRGLY0ldzfGMeQkb7vMd0as4CfYvUVzLqw0N0=
 github.com/joho/godotenv v1.5.1/go.mod h1:f4LDr5Voq0i2e/R5DDNOoa2zzDfwtkZa6DnEwAbqwq4=
 golang.org/x/text v0.26.0 h1:P42AVeLghgTYr4+xUnTRKDMqpar+PtX7KWuNQL21L8M=
