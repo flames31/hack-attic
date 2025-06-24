@@ -3,9 +3,13 @@ package tools
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
+	"os"
+
+	"github.com/joho/godotenv"
 )
 
 const BaseURL = "https://hackattic.com/challenges/"
@@ -45,4 +49,18 @@ func SendReponse(resBody map[string]interface{}, accessToken, problemName string
 	}
 
 	return string(finalData), nil
+}
+
+func GetAccessToken() (string, error) {
+	err := godotenv.Load(".env")
+	if err != nil {
+		return "", fmt.Errorf("error loading .env : %w", err)
+	}
+
+	accessToken := os.Getenv("ACCESS_TOKEN")
+	if accessToken == "" {
+		return "", errors.New("no access token set")
+	}
+
+	return accessToken, nil
 }
